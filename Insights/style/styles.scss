@@ -1,0 +1,604 @@
+$lt-gray: #ddd;
+$background-pale: #f0f2fe;
+$boldtext: #e60590;
+$button-color: #512da8;
+$wt: white;
+$bl: black;
+$orange: #fbc826;
+
+$boxshadow: 0px 10px 30px 0px rgba(212, 150, 255, 0.2);
+
+$break-small: 600px;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Lato", sans-serif;
+}
+
+.header {
+  width: 100%;
+  min-height: 350px;
+  padding: 0px;
+  display: flex;
+  text-align: left;
+  flex-wrap: wrap;
+  position: relative;
+  background-color: $background-pale;
+
+  .img-container {
+    width: 50%;
+    max-height: 350px;
+    min-height: 350px;
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
+  }
+
+  .mainInfo {
+    color: $bl;
+    width: 50%;
+    .text-container {
+      width: 50%;
+      position: absolute;
+      margin: 80px;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .text {
+      display: inline;
+      h1 {
+        font-size: 60px;
+        color: $orange;
+        span {
+          color: $bl;
+        }
+      }
+      p {
+        font-size: 14px;
+        font-weight: 3;
+      }
+    }
+    @media screen and (max-width: $break-small) {
+      .text-container {
+        width: 100%;
+        text-align: left;
+        margin: 100px 10px;
+        .text {
+          h1 {
+            font-size: 40px;
+          }
+        }
+        p {
+          display: inline-flex;
+          justify-content: left;
+        }
+      }
+    }
+    @media screen and (min-width: 700px) {
+      .img-container {
+        width: 100%;
+        flex-direction: row;
+      }
+      .text-container {
+        width: 50%;
+        text-align: left;
+        margin: 130px;
+        .text {
+          h1 {
+            font-size: 60px;
+          }
+        }
+        p {
+          display: inline-flex;
+          justify-content: left;
+        }
+      }
+    }
+  }
+}
+
+.main-content {
+  .nav {
+    margin-left: 100px;
+    text-align: right;
+    height: 50px;
+    line-height: 50px;
+    .nav-la {
+      background-color: $button-color;
+      color: $wt;
+      font-size: 16px;
+      justify-content: center;
+      width: 100px;
+      line-height: 50px;
+      display: none;
+      padding-right: 10px;
+    }
+    #toggle {
+      display: none;
+    }
+    @media screen and (max-width: 800px) {
+      margin-left: 5px;
+      .nav-la {
+        width: 100%;
+        text-align: left;
+        display: block;
+        cursor: pointer;
+      }
+      .tabs {
+        width: 100%;
+        display: none;
+      }
+      .tabs {
+        .tab {
+          width: 90%;
+          display: block;
+          justify-content: left;
+          text-align: left;
+          border-bottom: 1px solid $lt-gray;
+          margin: 4px;
+        }
+        .tab:hover {
+          background-color: $lt-gray;
+        }
+        .tab-active {
+          display: none;
+        }
+      }
+      #toggle:checked + .tabs {
+        display: block;
+      }
+    }
+  }
+
+  .tab {
+    margin-left: 40px;
+    float: left;
+    text-decoration: none;
+  }
+
+  .tab label {
+    border-radius: 20px;
+    padding: 10px;
+    color: black;
+    margin-left: -1px;
+    position: relative;
+    left: 1px;
+  }
+  .tab [type="radio"] {
+    display: none;
+  }
+  .content {
+    position: absolute;
+  }
+  [type="radio"]:checked ~ label {
+    background: $button-color;
+    color: $wt;
+    border-bottom: 1px solid white;
+    z-index: 2;
+  }
+  [type="radio"]:checked ~ label ~ .content {
+    z-index: 1;
+  }
+
+  .view {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    margin: 50px;
+    background-color: $wt;
+    @media screen and (max-width: $break-small) {
+      margin-top: 40px;
+    }
+
+    a {
+      margin: 10px 5px;
+      font-size: 12px;
+      padding: 5px;
+      border: none;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: black;
+    }
+    .active {
+      background-color: $button-color;
+      color: $wt;
+      border-radius: 50px;
+    }
+  }
+}
+
+:root {
+  --card-img-height: 250px;
+}
+.card-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px;
+  .card {
+    align-self: flex-start;
+    position: relative;
+    width: 325px;
+    min-width: 275px;
+    margin: 1.75rem 1.05rem 0rem;
+    background: white;
+    .card-img {
+      width: 100%;
+      height: var(--card-img-height);
+      img {
+        object-fit: cover;
+      }
+      --card-img-overlay: $gradient;
+      .text-block {
+        position: absolute;
+        top: 42%;
+        left: 0px;
+        color: $wt;
+
+        padding: 5px;
+        padding-left: 16px;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        filter: none;
+        p {
+          position: relative;
+          margin: 0px;
+          font-size: 10px;
+          &:first-of-type {
+            margin-top: 1px;
+            &:before {
+              content: "";
+              position: absolute;
+              height: 18px;
+              background: $boldtext;
+              opacity: 0.7;
+              width: 15px;
+              top: -1.2rem;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+      .img-txt {
+        position: absolute;
+        top: 47%;
+        right: 14px;
+        background-color: $wt;
+        border: 1px solid transparent;
+        border-radius: 30px;
+        color: $bl;
+        padding: 3px;
+        font-size: 11px;
+      }
+    }
+
+    .card-info {
+      position: relative;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid $lt-gray;
+      box-shadow: $boxshadow;
+      .card-title {
+        z-index: 10;
+        font-size: 1.25rem;
+        padding-bottom: 0.75rem;
+        padding-top: 0.75rem;
+      }
+      .card-about {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1px;
+        transition: all 200ms ease-in-out;
+
+        .card-tag {
+          width: 60px;
+          max-width: 100px;
+          padding: 0.2rem 0.5rem;
+          font-size: 12px;
+          text-align: center;
+          letter-spacing: 1px;
+          color: #fff;
+        }
+      }
+
+      .card-creator {
+        padding-bottom: 10px;
+
+        align-items: left;
+      }
+      .card-footer {
+        display: flex;
+        justify-content: left;
+        border-top: 1px solid $boldtext;
+        color: black;
+        margin-right: 0%;
+        margin-top: 10px;
+        background: transparent;
+        p {
+          margin: 15px 4px 10px 0px;
+          i {
+            color: $boldtext;
+          }
+          p {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            vertical-align: bottom;
+            color: $bl;
+            font-size: 15px;
+            vertical-align: sub;
+            color: $orange;
+          }
+        }
+        a {
+          text-align: right;
+          font-size: 14px;
+          float: right;
+          text-decoration: none;
+          color: $boldtext;
+          font-weight: 600;
+          text-transform: uppercase;
+          margin-left: 90px;
+          padding-left: 20px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+.events {
+  background-color: $background-pale;
+  .title {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    h1 {
+      margin-top: 50px;
+      margin-bottom: 15px;
+      color: black;
+      font-size: 40px;
+      text-shadow: 5px 5px 10px $lt-gray;
+    }
+  }
+
+  .view {
+    text-align: center;
+    display: block;
+    justify-content: center;
+    margin-top: auto;
+    margin-top: 40px;
+    background-color: $background-pale;
+    @media screen and (max-width: $break-small) {
+      margin-top: 40px;
+    }
+
+    a {
+      font-size: 15px;
+      font-weight: 600;
+      padding: 10px 50px 10px 50px;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $boldtext;
+    }
+  }
+
+  :root {
+    --card-img-height: 170px;
+  }
+  .card-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px;
+  }
+
+  .card {
+    align-self: flex-start;
+    position: relative;
+    width: 500px;
+    min-width: 200px;
+    margin: 1.75rem 1.05rem 0rem;
+    background: $background-pale;
+    .card-img {
+      width: 100%;
+      height: 170px;
+      img {
+        object-fit: cover;
+      }
+      --card-img-overlay: $gradient;
+      .text-block {
+        position: absolute;
+        top: 46%;
+        padding: 12px;
+        padding-left: 16px;
+        color: $wt;
+        filter: none;
+        p {
+          position: relative;
+          font-size: 8px;
+          &:first-of-type {
+            margin-top: 1px;
+            &:before {
+              content: "";
+              position: absolute;
+              height: 18px;
+              background: $boldtext;
+              opacity: 0.6;
+              width: 15px;
+              top: -1.2rem;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+      .img-txt {
+        position: absolute;
+        top: 49%;
+        right: 14px;
+        background-color: $wt;
+        border: 1px solid transparent;
+        border-radius: 30px;
+        color: $bl;
+        padding: 3px;
+        font-size: 11px;
+      }
+    }
+
+    .card-info {
+      position: relative;
+      padding: 0.75rem 1.25rem;
+      border: 1px solid $lt-gray;
+      background-color: $wt;
+      box-shadow: $boxshadow;
+      .card-title {
+        z-index: 10;
+        font-size: 1.25rem;
+        padding-bottom: 0.75rem;
+        padding-top: 0.75rem;
+      }
+
+      .card-creator {
+        padding-bottom: 40px;
+        align-items: left;
+      }
+      span {
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 14px;
+        color: $bl;
+        i {
+          margin-top: 20px;
+          margin-right: 4px;
+          color: $boldtext;
+        }
+      }
+    }
+    @media screen and (max-width: $break-small) {
+      .card-img {
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.join {
+  width: 100%;
+  min-height: 350px;
+  padding-top: 0px;
+  margin: 80px 0px 0px 0px;
+  display: flex;
+  text-align: left;
+  flex-wrap: wrap;
+  position: relative;
+  background-color: black;
+  img {
+    min-width: 100%;
+    max-height: 360px;
+    width: auto;
+    height: auto;
+    opacity: 0.4;
+    object-fit: cover;
+  }
+  .mainInfo {
+    .overlay {
+      margin: 90px 157px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+    .text {
+      color: $wt;
+      display: inline;
+      justify-content: space-evenly;
+      align-items: center;
+      text-align: center;
+      margin: 50px auto;
+      h2 {
+        display: flex;
+        justify-content: center;
+        vertical-align: middle;
+        padding-top: 10px;
+      }
+      h1 {
+        display: flex;
+        justify-content: center;
+        font-weight: 800;
+        vertical-align: middle;
+        color: $orange;
+        padding-bottom: 20px;
+        word-spacing: 5px;
+        font-size: 50px;
+      }
+    }
+  }
+  @media screen and (max-width: $break-small) {
+    .mainInfo {
+      .overlay {
+        margin: 40px 10px;
+      }
+      .text {
+        font-size: 25px;
+        margin: 10px auto;
+        h2 {
+          font-size: 30px;
+        }
+        h1 {
+          font-size: 30px;
+          display: flex;
+        }
+      }
+
+      display: flex;
+      justify-content: center;
+      margin: 0px;
+      padding: 0px 0px;
+    }
+  }
+}
+.join-button {
+  text-align: center;
+  display: block;
+  justify-content: center;
+  margin-top: 40px;
+  @media screen and (max-width: $break-small) {
+    margin-top: 40px;
+  }
+
+  a {
+    font-size: 15px;
+    padding: 10px 50px 10px 50px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $wt;
+    border-radius: 30px;
+    text-decoration: none;
+    color: $wt;
+  }
+}
